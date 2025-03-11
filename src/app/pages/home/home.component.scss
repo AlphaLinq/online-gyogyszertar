@@ -1,0 +1,17 @@
+button{
+    background-color: chartreuse;
+    border-radius: 10px;
+    width: 500px;
+    text-align: center;
+    height: 50px;
+    font-size: larger;
+    font-weight: bold;
+    border: 2px solid black;
+    display: inline-block;
+    transition-duration: 0.4s;
+    cursor:cell;
+}
+
+.button:hover{
+    background-color: aquamarine;
+}
