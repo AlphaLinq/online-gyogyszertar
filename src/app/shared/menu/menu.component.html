@@ -1,7 +1,10 @@
-<select #pageValue (change)="menuSwitch(pageValue.value)">
-    <option value="home">Home</option>
-    <option value="medicine">Medicines</option>
-    <option value="profile">Profile</option>
-</select>
-
-<h2>Ez itt a menubár ha valamiért látnál szólj a fejlesztőnek! XD</h2>
+<body>
+  <nav class="navbar">
+    <ul class="nav-items">
+      <li class="nav-item"><a (click)="menuSwitch('home')">Home</a></li>
+      <li class="nav-item"><a (click)="menuSwitch('medicine')">Medicine</a></li>
+      <li class="nav-item"><a (click)="menuSwitch('profile')">Profil</a></li>
+      <div class="nav-indicator"></div>
+    </ul>
+  </nav>
+</body>

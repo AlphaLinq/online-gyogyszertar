@@ -1,0 +1,48 @@
+body {
+  background-color: lightcyan; /* Az egész oldal háttere */
+  margin: 0; /* Eltávolítja az alapértelmezett margót */
+  padding: 0; /* Eltávolítja az alapértelmezett paddinget */
+  font-family: Arial, sans-serif; /* Opcionális: alapértelmezett betűtípus */
+}
+
+.page-layout {
+  display: flex;
+  align-items: flex-start;
+}
+
+.filter-panel {
+  background-color: aqua;
+  border-radius: 15px;
+
+  padding: 0px 25px;
+  width: 200px;
+  position: sticky;
+  left: 20px;
+  top: 150px;
+
+  box-shadow: 0px, 5px, 15px, rgba(0, 0, 0, 0.25);
+}
+
+.filter-panel ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.filter-panel li {
+  margin: 20px 0;
+}
+
+.medicine-container {
+  flex: 1;
+  margin-left: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.medicine-card {
+  border: 1px solid greenyellow;
+  padding: 15px;
+  text-align: center;
+  border-radius: 8px;
+}
