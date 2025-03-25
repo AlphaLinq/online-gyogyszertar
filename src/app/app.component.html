@@ -1,5 +1,11 @@
 
-<app-menu></app-menu>
-<app-home *ngIf="page === 'home'"></app-home>
-<!--@else{<app-profile></app-profil>}-->
+<app-menu (selectedPage)="changePage($event)" ></app-menu>
+@if (page === "home"){
+    <app-home></app-home>
+} @else if (page === "medicine") {
+    <app-medicines></app-medicines>
+}
+
+<!--app-home *ngIf="page === 'home'"></app-home>
+@else{<app-profile></app-profil>}-->
 <!--router-outlet /-->
