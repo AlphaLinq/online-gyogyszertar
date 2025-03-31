@@ -1,3 +1,4 @@
+<!--
 <body>
   <nav class="navbar">
     <ul class="nav-items">
@@ -8,3 +9,19 @@
     </ul>
   </nav>
 </body>
+-->
+
+<nav class="navbar">
+  <ul class="nav-items">
+    <li class="nav-item" id="home" (click)="setActive('home')">
+      <a routerLink="/home" routerLinkActive="is-active">Home</a>
+    </li>
+    <li class="nav-item" id="medicines" (click)="setActive('medicines')">
+      <a routerLink="/medicines" routerLinkActive="is-active">Medicines</a>
+    </li>
+    <li class="nav-item" id="profile" (click)="setActive('profile')">
+      <a routerLink="/profile" routerLinkActive="is-active">Profile</a>
+    </li>
+    <div class="nav-indicator" id="indicator" #indicator></div>
+  </ul>
+</nav>

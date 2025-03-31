@@ -5,44 +5,50 @@ import {
   EventEmitter,
   OnInit,
   Output,
+  QueryList,
   Renderer2,
+  ViewChild,
+  ViewChildren,
 } from '@angular/core';
+
+import {
+  NavigationEnd,
+  RouterLink,
+  RouterLinkActive,
+  Router,
+} from '@angular/router';
 
 @Component({
   selector: 'app-menu',
-  imports: [],
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
 })
-export class MenuComponent implements OnInit, AfterViewInit {
-  @Output() selectedPage: EventEmitter<string> = new EventEmitter();
-
-  constructor(private renderer: Renderer2, private el: ElementRef) {}
-
-  ngOnInit(): void {}
+export class MenuComponent {
+  @ViewChild('indicator') indicator!: ElementRef;
 
   ngAfterViewInit(): void {
-    const defaultPage = 'home';
-    this.setIndicatorPosition(defaultPage);
-  }
-  menuSwitch(pageValue: string): void {
-    this.selectedPage.emit(pageValue);
-    this.setIndicatorPosition(pageValue);
+    this.setActive('home');
   }
 
-  private setIndicatorPosition(pageValue: string): void {
-    const items = this.el.nativeElement.querySelectorAll('.nav-item');
-    const indicator = this.el.nativeElement.querySelector('.nav-indicator');
+  setActive(menuItem: string): void {
+    const activeElement = document.querySelector(
+      `li.nav-item#${menuItem}`
+    ) as HTMLElement;
 
-    items.forEach((item: HTMLElement) => {
-      if (item.textContent?.trim().toLowerCase() === pageValue.toLowerCase()) {
-        const { offsetLeft, offsetWidth } = item;
-        this.renderer.setStyle(indicator, 'left', `${offsetLeft}px`);
-        this.renderer.setStyle(indicator, 'width', `${offsetWidth}px`);
-        item.classList.add('is-active');
-      } else {
-        item.classList.remove('is-active');
-      }
-    });
+    console.log('Active: ', activeElement);
+    console.log(`Selector: li.nav-item#${menuItem}`);
+    console.log('Indikátor: ', this.indicator);
+
+    if (activeElement && this.indicator) {
+      const indicatorEl = this.indicator.nativeElement as HTMLElement;
+      const { offsetLeft, offsetWidth } = activeElement;
+
+      console.log('OffsetLeft:', offsetLeft);
+      console.log('OffsetWidth:', offsetWidth);
+
+      indicatorEl.style.transform = `translateX(${offsetLeft}px)`;
+      indicatorEl.style.width = `${offsetWidth}px`;
+    }
   }
 }
