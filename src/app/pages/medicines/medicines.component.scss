@@ -14,13 +14,22 @@ body {
   flex: 1;
   margin-left: 20px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  //grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .medicine-card {
   border: 1px solid greenyellow;
-  padding: 15px;
+  padding: 60px;
   text-align: center;
   border-radius: 8px;
+  flex-grow: 1;
+}
+
+img {
+  width: 15%;
+  aspect-ratio: 3/2;
+  object-fit: contain;
 }
