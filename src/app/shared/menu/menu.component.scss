@@ -23,11 +23,22 @@ body {
   box-shadow: 0 10px 40px rgba(159, 162, 177, 0.8);
 }
 
+.navbar a {
+  text-decoration: none !important;
+  color: black !important;
+}
+
+.navbar a:hover {
+  color: green !important;
+}
+
+/*
 .nav-item {
   position: relative;
   padding: 10px 20px;
   cursor: pointer;
-}
+  text-decoration: none;
+}*/
 
 .nav-items {
   color: #83818c;
@@ -43,11 +54,6 @@ body {
   position: relative;
   display: flex;
   gap: 100px;
-}
-
-.nav-items li {
-  display: inline-block;
-  position: relative;
 }
 
 .nav-item::before {
@@ -72,11 +78,7 @@ body {
   z-index: 10;
   border-radius: 8px 8px 0 0;
   background-color: red;
-  transition: left 0.3s ease, width 0.3s ease;
-}
-
-.nav-item:not(.is-active):hover {
-  color: #333;
+  transition: left 0.6s ease, width 0.6s ease;
 }
 
 .nav.item.is-active ~ .nav-indicator {
