@@ -1,9 +1,11 @@
 .user-info {
-  grid-template-rows: 200px auto 100px;
-  background-color: aqua;
+  grid-template-rows: 100px 50px 100px; // adatok közti hézagokat ezzel állítsd át
+  background-color: rgb(80, 226, 226);
   text-align: center;
-  margin: 10px 50px;
+  margin: 10px 60px;
   border-radius: 15px;
+  display: grid;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .user-info ul {
@@ -13,13 +15,44 @@
 .cart {
   border: 5px solid black;
   border-radius: 20px;
+  background-color: #60a4db;
+}
+
+.user-info:hover {
+  transform: scale(1.02);
+  transition: transform 0.3s ease;
+}
+
+.cart:hover {
+  border-color: darkgray;
+  transition: border-color 0.3s ease;
 }
 
 .profile-header {
-  background-color: greenyellow;
+  background-color: #90ee90;
   border-bottom: 3px solid black;
   text-align: start;
   font-size: larger;
   padding-top: -5px;
   margin-top: -5px;
+
+  font-size: 1.5rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h2 {
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 768px) {
+  .user-info {
+    margin: 10px 20px;
+    grid-template-rows: auto auto auto;
+  }
+
+  .cart {
+    width: 100%;
+    margin: 10px 0;
+  }
 }
