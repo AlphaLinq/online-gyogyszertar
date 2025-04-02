@@ -1,0 +1,25 @@
+.user-info {
+  grid-template-rows: 200px auto 100px;
+  background-color: aqua;
+  text-align: center;
+  margin: 10px 50px;
+  border-radius: 15px;
+}
+
+.user-info ul {
+  list-style: none;
+}
+
+.cart {
+  border: 5px solid black;
+  border-radius: 20px;
+}
+
+.profile-header {
+  background-color: greenyellow;
+  border-bottom: 3px solid black;
+  text-align: start;
+  font-size: larger;
+  padding-top: -5px;
+  margin-top: -5px;
+}
