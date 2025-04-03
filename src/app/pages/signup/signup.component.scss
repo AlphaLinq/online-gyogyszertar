@@ -1,0 +1,70 @@
+$font: Arial, Helvetica, sans-serif;
+
+.input-form {
+  display: grid;
+  gap: 30px;
+  grid-template-rows: repeat(4, 30px); // 4 mező a regisztrációhoz
+  align-content: center;
+  padding: 10px 150px;
+}
+
+form > input,
+form > button {
+  border: 2px solid lightgray;
+  border-radius: 50px !important;
+  appearance: none;
+  box-sizing: border-box;
+  width: 100%;
+  height: 50px;
+}
+
+form > input {
+  background-color: lightyellow;
+  font-family: $font;
+  transition: all 0.375s;
+}
+
+form > input::placeholder {
+  color: black;
+  padding: 10px 10px 10px 20px; // Az utolsó viszi beljebb
+}
+
+form > input:hover,
+form > button:hover {
+  border: 2px solid black;
+}
+
+button {
+  background-color: lightblue;
+  font-family: $font;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+header {
+  text-align: center;
+  font-weight: bold;
+  font-size: x-large;
+  font-family: $font;
+  padding: 5px 0px;
+}
+
+.container {
+  background-color: yellow;
+  margin: 50px 50px;
+  position: relative;
+  padding: 150px 30px 30px;
+  border: 4px solid black;
+  box-shadow: 0 100px 100px rgb(0 0 0 / 20%);
+}
+
+footer {
+  margin: 40px 10px 10px 10px;
+  text-align: center;
+}
+
+footer a {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}

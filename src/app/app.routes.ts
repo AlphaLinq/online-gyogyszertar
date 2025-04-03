@@ -7,7 +7,11 @@ import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 
 export const routes: Routes = [
-  { path: 'home', component: HomeComponent },
+  {
+    path: 'home',
+    loadComponent: () =>
+      import('./pages/home/home.component').then((m) => m.HomeComponent),
+  },
 
   /*{
     path: 'medicines',
@@ -16,11 +20,31 @@ export const routes: Routes = [
         (m) => m.MedicinesComponent
       ),
   },*/
-  { path: 'medicines', component: MedicinesComponent },
+  {
+    path: 'medicines',
+    loadComponent: () =>
+      import('./pages/medicines/medicines.component').then(
+        (m) => m.MedicinesComponent
+      ),
+  },
 
-  { path: 'profile', component: ProfileComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignupComponent },
+  {
+    path: 'profile',
+    loadComponent: () =>
+      import('./pages/profile/profile.component').then(
+        (m) => m.ProfileComponent
+      ),
+  },
+  {
+    path: 'login',
+    loadComponent: () =>
+      import('./pages/login/login.component').then((m) => m.LoginComponent),
+  },
+  {
+    path: 'signup',
+    loadComponent: () =>
+      import('./pages/signup/signup.component').then((m) => m.SignupComponent),
+  },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 
