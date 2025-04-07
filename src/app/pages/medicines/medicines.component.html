@@ -2,14 +2,10 @@
   <div class="page-layout">
     <app-filter (categorySelected)="onCategorySelected($event)"></app-filter>
     <div class="medicine-container">
-      <div class="medicine-card">
-        <img src="/public/algoflex.png" alt="algoflex_rapid_10x" />
-        <h3>Algoflex Rapid</h3>
-      </div>
-      <div class="medicine-card">
-        <img src="/public/c_vitamin.png" alt="c-vitamin" />
-        <h3>C Vitamin</h3>
-        <p>1000 mg-os</p>
+      <div class="medicine-card" *ngFor="let medicine of MedicineObject">
+        <img [src]="medicine.png" [alt]="medicine.name" />
+        <h3>{{ medicine.name }}</h3>
+        <p *ngIf="medicine.description">{{ medicine.description }}</p>
       </div>
     </div>
   </div>

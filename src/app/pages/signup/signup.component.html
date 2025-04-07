@@ -1,11 +1,34 @@
 <div class="container">
   <header>Regisztráció</header>
   <form class="input-form">
-    <input type="text" placeholder="Teljes név" required />
-    <input type="email" placeholder="E-mail cím" required />
-    <input type="password" placeholder="Jelszó" required />
-    <input type="password" placeholder="Jelszó megerősítése" required />
-    <button type="submit">Regisztráció</button>
+    <mat-form-field appearance="outline">
+      <mat-label>Teljes név</mat-label>
+      <input matInput type="text" placeholder="Teljes név" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>E-mail cím</mat-label>
+      <input matInput type="email" placeholder="E-mail cím" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Jelszó</mat-label>
+      <input matInput type="password" placeholder="Jelszó" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Jelszó megerősítése</mat-label>
+      <input
+        matInput
+        type="password"
+        placeholder="Jelszó megerősítése"
+        required
+      />
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">
+      Regisztráció
+    </button>
   </form>
   <footer>Már van fiókod? <a routerLink="/login">Jelentkezz be!</a></footer>
 </div>

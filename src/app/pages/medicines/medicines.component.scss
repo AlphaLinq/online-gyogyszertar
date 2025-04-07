@@ -1,8 +1,8 @@
 body {
-  background-color: lightcyan; /* Az egész oldal háttere */
-  margin: 0; /* Eltávolítja az alapértelmezett margót */
-  padding: 0; /* Eltávolítja az alapértelmezett paddinget */
-  font-family: Arial, sans-serif; /* Opcionális: alapértelmezett betűtípus */
+  background-color: lightcyan;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
 }
 
 .page-layout {
@@ -14,7 +14,7 @@ body {
   flex: 1;
   margin-left: 20px;
   display: grid;
-  //grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
   display: flex;
   flex-wrap: wrap;
@@ -22,14 +22,16 @@ body {
 
 .medicine-card {
   border: 1px solid greenyellow;
-  padding: 60px;
+  padding: 15px;
   text-align: center;
   border-radius: 8px;
   flex-grow: 1;
+  max-width: 800px;
+  margin: auto;
 }
 
 img {
-  width: 15%;
+  width: 30%;
   aspect-ratio: 3/2;
   object-fit: contain;
 }

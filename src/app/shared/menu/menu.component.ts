@@ -3,6 +3,7 @@ import {
   Component,
   ElementRef,
   EventEmitter,
+  Input,
   OnInit,
   Output,
   QueryList,
@@ -10,6 +11,10 @@ import {
   ViewChild,
   ViewChildren,
 } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import {
   NavigationEnd,
@@ -25,6 +30,10 @@ import {
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent {
+  menuOpen: any;
+  toggleMenu() {
+    throw new Error('Method not implemented.');
+  }
   @ViewChild('indicator') indicator!: ElementRef;
 
   ngAfterViewInit(): void {

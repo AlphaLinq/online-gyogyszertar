@@ -1,0 +1,18 @@
+mat-toolbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90px;
+}
+
+.desktop-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .desktop-menu {
+    display: none; /* Mobil nézetben rejtett */
+  }
+}

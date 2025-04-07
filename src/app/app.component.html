@@ -1,17 +1,31 @@
-<!--
-<app-menu (selectedPage)="changePage($event)"></app-menu>
-@if (page === "home"){
-<app-home></app-home>
-} @else if (page === "medicine") {
-<app-medicines></app-medicines>
-} @else if (page === "profile") {
-<app-profile></app-profile>
-}
--->
-
-<!--app-home *ngIf="page === 'home'"></app-home>
-@else{<app-profile></app-profil>}-->
-<!--router-outlet /-->
-
-<app-menu></app-menu>
+@if (!isMobile) {
+<mat-toolbar>
+  <div class="desktop-menu">
+    <app-menu></app-menu>
+  </div>
+</mat-toolbar>
 <router-outlet />
+} @else {
+<mat-sidenav-container>
+  <mat-sidenav #sidenav>
+    <app-mobile-menu
+      [sidenav]="sidenav"
+      [isLoggedIn]="isLoggedIn"
+      (logoutEvent)="logout()"
+    ></app-mobile-menu>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <button
+        mat-button
+        (click)="onToggleSidenav(sidenav)"
+        class="menu-toggle-button"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+      <div>Gyógyszertár</div>
+    </mat-toolbar>
+    <router-outlet />
+  </mat-sidenav-content>
+</mat-sidenav-container>
+}
