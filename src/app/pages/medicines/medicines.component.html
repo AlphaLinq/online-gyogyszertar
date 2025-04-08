@@ -1,12 +1,30 @@
-<body>
-  <div class="page-layout">
-    <app-filter (categorySelected)="onCategorySelected($event)"></app-filter>
-    <div class="medicine-container">
-      <div class="medicine-card" *ngFor="let medicine of MedicineObject">
-        <img [src]="medicine.png" [alt]="medicine.name" />
-        <h3>{{ medicine.name }}</h3>
-        <p *ngIf="medicine.description">{{ medicine.description }}</p>
-      </div>
-    </div>
+<div class="page-layout">
+  <app-filter (categorySelected)="onCategorySelected($event)"></app-filter>
+
+  <div class="medicine-container">
+    @for (medicine of filteredMedicines; track medicine.id) {
+    <mat-card class="medicine-card">
+      <mat-card-header>
+        <mat-card-title>{{ medicine.name }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-subtitle>{{ medicine.price }} Ft</mat-card-subtitle>
+      <img mat-card-image [src]="medicine.png" [alt]="medicine.name" />
+
+      <mat-card-content>
+        @if (medicine.description) {
+        <mat-card-content>{{ medicine.description }}</mat-card-content>
+        } @else {
+        <p class="no-description">Nincs leírás</p>
+        }
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-button color="primary" (click)="addToCart(medicine)">
+          <mat-icon>add_shopping_cart</mat-icon>
+          Hozzáadás
+        </button>
+      </mat-card-actions>
+    </mat-card>
+    }
   </div>
-</body>
+</div>

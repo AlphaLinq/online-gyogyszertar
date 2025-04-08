@@ -1,11 +1,18 @@
 import { Component, signal } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [MatButtonModule],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrl: './home.component.scss',
 })
 export class HomeComponent {
-    title = signal("Üdvözlöm a weboldalon!")
+  constructor(private router: Router) {}
+
+  changePage() {
+    this.router.navigateByUrl('/medicines');
+  }
+  title = signal('Üdvözlöm a weboldalon!');
 }

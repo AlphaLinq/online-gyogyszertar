@@ -1,23 +1,8 @@
-<aside class="filter-panel">
-  <h2><label for="filter-panel">Szűrés</label></h2>
-  <ul>
-    <li>
-      <input
-        type="radio"
-        id="painkillers"
-        name="medicine-category"
-        (change)="onCategoryChange('painkillers')"
-      />
-      <label for="painkillers">Fájdalomcsillapító</label>
-    </li>
-    <li>
-      <input
-        type="radio"
-        id="vitamins"
-        name="medicine-category"
-        (change)="onCategoryChange('vitamins')"
-      />
-      <label for="vitamins">Vitaminok</label>
-    </li>
-  </ul>
-</aside>
+<mat-card class="filter-panel">
+  <mat-card-title>Szűrés</mat-card-title>
+  <mat-radio-group (change)="onCategoryChange($event.value)">
+    <mat-radio-button value="all">Összes</mat-radio-button>
+    <mat-radio-button value="painkillers">Fájdalomcsillapító</mat-radio-button>
+    <mat-radio-button value="vitamins">Vitaminok</mat-radio-button>
+  </mat-radio-group>
+</mat-card>

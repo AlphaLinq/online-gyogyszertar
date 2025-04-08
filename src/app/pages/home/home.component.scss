@@ -1,19 +1,7 @@
-button {
-  background-color: chartreuse;
-  border-radius: 10px;
-  width: 500px;
-  text-align: center;
-  height: 50px;
-  font-size: larger;
-  font-weight: bold;
-  border: 2px solid black;
-  display: inline-block;
-  transition-duration: 0.4s;
-  cursor: pointer;
-}
-
-.button:hover {
-  background-color: aquamarine;
+body {
+  background-image: url("../../../../public/upscalemedia-transformed.jpeg");
+  background-size: cover;
+  background-color: #90e1f5;
 }
 
 header {
@@ -21,11 +9,20 @@ header {
   color: white;
   padding-inline: 16px;
   padding-block: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
 .home-container {
-  background-image: url("../../../../public/800_3492724_ec3010b74292f083042b11e510c663b1e4efb4b4.jpg");
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+
+.medicines {
+  background-color: #4caf50 !important;
+  color: white;
+  font-size: large;
+  border-radius: 8px;
+  box-shadow: 0 4px 60px rgba(0, 0, 0, 0.25);
+  max-width: 500px;
 }

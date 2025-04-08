@@ -5,7 +5,7 @@ export const MedicineObjects = [
     price: '2500',
     description: 'Fejfájás ellen tökéletes',
     png: 'algoflex.jpg',
-    tipus: 'painkillers',
+    type: 'painkillers',
   },
   {
     id: '1',
@@ -13,6 +13,6 @@ export const MedicineObjects = [
     price: '3000',
     description: 'C vitamin az egészségért!',
     png: 'c_vitamin.png',
-    tipus: 'vitamins',
+    type: 'vitamins',
   },
 ];

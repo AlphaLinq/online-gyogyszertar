@@ -44,10 +44,6 @@ export class MenuComponent {
       `li.nav-item#${menuItem}`
     ) as HTMLElement;
 
-    console.log('Active: ', activeElement);
-    console.log(`Selector: li.nav-item#${menuItem}`);
-    console.log('Indikátor: ', this.indicator);
-
     if (activeElement && this.indicator) {
       const indicatorEl = this.indicator.nativeElement as HTMLElement;
       const { offsetLeft, offsetWidth } = activeElement;

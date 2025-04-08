@@ -1,9 +1,13 @@
-<div class="home-container">
-  <header>{{ title() }}</header>
-  <h2>
-    Az oldalunk még fejlesztés alatt áll.
-    <p>Köszönjük a türelmét!</p>
-  </h2>
+<body>
+  <div class="home-container">
+    <header>{{ title() }}</header>
+    <h2>
+      Az oldalunk még fejlesztés alatt áll.
+      <p>Köszönjük a türelmét!</p>
+    </h2>
 
-  <button>Nézd meg a gyógyszer kíválatunkat!</button>
-</div>
+    <button mat-flat-button class="medicines" (click)="changePage()">
+      Nézd meg a kínálatunk!
+    </button>
+  </div>
+</body>
