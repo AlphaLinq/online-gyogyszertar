@@ -1,15 +1,3 @@
-<!--
-<body>
-  <nav class="navbar">
-    <ul class="nav-items">
-      <li class="nav-item"><a (click)="menuSwitch('home')">Home</a></li>
-      <li class="nav-item"><a (click)="menuSwitch('medicine')">Medicine</a></li>
-      <li class="nav-item"><a (click)="menuSwitch('profile')">Profil</a></li>
-      <div class="nav-indicator"></div>
-    </ul>
-  </nav>
-</body>
--->
 <nav class="navbar">
   <ul class="nav-items">
     <li class="nav-item" id="home" (click)="setActive('home')">
@@ -18,15 +6,18 @@
     <li class="nav-item" id="medicines" (click)="setActive('medicines')">
       <a routerLink="/medicines" routerLinkActive="is-active">Medicines</a>
     </li>
+    @if (isLoggedIn){
     <li class="nav-item" id="profile" (click)="setActive('profile')">
       <a routerLink="/profile" routerLinkActive="is-active">Profile</a>
     </li>
+    } @else{
     <li class="nav-item" id="login" (click)="setActive('login')">
       <a routerLink="/login" routerLinkActive="is-active">Login</a>
     </li>
     <li class="nav-item" id="signup" (click)="setActive('signup')">
       <a routerLink="/signup" routerLinkActive="is-active">Sign up</a>
     </li>
+    }
     <div class="nav-indicator" id="indicator" #indicator></div>
   </ul>
 </nav>

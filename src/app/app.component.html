@@ -1,7 +1,7 @@
 @if (!isMobile) {
 <mat-toolbar>
   <div class="desktop-menu">
-    <app-menu></app-menu>
+    <app-menu [isLoggedIn]="isLoggedIn"></app-menu>
   </div>
 </mat-toolbar>
 <router-outlet />

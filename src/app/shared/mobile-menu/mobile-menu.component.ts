@@ -10,10 +10,18 @@ import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { MenuComponent } from '../menu/menu.component';
 import { MatNavList } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-mobile-menu',
-  imports: [MatSidenavModule, MatIconModule, MatToolbarModule, MatNavList],
+  imports: [
+    MatSidenavModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatNavList,
+    RouterLink,
+    RouterLinkActive,
+  ],
   templateUrl: './mobile-menu.component.html',
   styleUrl: './mobile-menu.component.scss',
 })

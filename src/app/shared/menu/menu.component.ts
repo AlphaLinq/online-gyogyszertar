@@ -25,16 +25,15 @@ import {
 
 @Component({
   selector: 'app-menu',
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLinkActive, RouterLink],
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent {
-  menuOpen: any;
-  toggleMenu() {
-    throw new Error('Method not implemented.');
-  }
+  @Input() isLoggedIn!: boolean;
+
   @ViewChild('indicator') indicator!: ElementRef;
+  @Output() logoutEvent = new EventEmitter<void>();
 
   ngAfterViewInit(): void {
     this.setActive('home');
@@ -59,5 +58,10 @@ export class MenuComponent {
       indicatorEl.style.transform = `translateX(${offsetLeft}px)`;
       indicatorEl.style.width = `${offsetWidth}px`;
     }
+  }
+
+  logout() {
+    localStorage.setItem('isLoggedIn', 'false');
+    window.location.href = '/home';
   }
 }

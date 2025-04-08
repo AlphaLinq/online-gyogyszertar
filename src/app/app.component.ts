@@ -31,7 +31,7 @@ import { MobileMenuComponent } from './shared/mobile-menu/mobile-menu.component'
 })
 export class AppComponent {
   isMobile = false;
-  isLoggedIn = false;
+  isLoggedIn: boolean = false;
 
   @HostListener('window:resize', ['$event'])
   onResize() {

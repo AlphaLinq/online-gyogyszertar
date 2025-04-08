@@ -2,18 +2,18 @@ $font: Arial, Helvetica, sans-serif;
 
 .container {
   background-color: wheat;
-  margin: 50px 50px;
-  position: relative;
-  padding: 150px 30px 30px;
+  margin: 50px auto;
+  text-align: center;
+  padding: 50px 50px;
   border: 4px solid black;
   box-shadow: 0 100px 100px rgb(0 0 0 / 20%);
+  max-width: 400px;
 }
 
 .input-form {
   display: grid;
   gap: 30px;
   align-content: center;
-  padding: 10px 150px;
 }
 
 mat-form-field {

@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -28,8 +29,9 @@ export class LoginComponent {
   loginError: string = '';
   isLoading: boolean = false;
   showLoginForm: boolean = true;
+  loadingSubsctription?: Subscription;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   logIn() {
     this.loginError = '';
