@@ -2,19 +2,19 @@
   <header>Bejelentkezés</header>
 
   @if (isLoading){
-  <div>
+  <div class="loading-container">
     <h2>Belépés folyamatban...</h2>
     <mat-spinner diameter="50"></mat-spinner>
     <p>Kis türelmét kérjük!</p>
   </div>
   } @if (showLoginForm){
-  <form (ngSubmit)="logIn()" class="input-form">
-    <mat-form-field appearance="fill">
+  <form (ngSubmit)="login()" class="login-form">
+    <mat-form-field appearance="outline">
       <input matInput type="email" placeholder="Email" [formControl]="email" />
       <mat-icon matSuffix>email</mat-icon>
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="outline">
       <input
         matInput
         type="password"
@@ -29,13 +29,14 @@
       {{ loginError }}
     </div>
     }
-
     <button mat-flat-button color="primary" type="submit">Bejelentkezés</button>
-    <footer>
-      Még nincs fiókod?
-      <a routerLink="/signup" routerLinkActive="is-active">Regisztrálj itt!</a>
-    </footer>
   </form>
 
+  <footer>
+    Még nincs fiókod?
+    <button mat-flat-button [routerLink]="['/signup']">Regisztrálás</button>
+  </footer>
   }
+  <p>{{ email.value }}</p>
+  <p>{{ password.value }}</p>
 </div>

@@ -1,4 +1,4 @@
-<nav class="navbar">
+<mat-nav-list class="navbar">
   <ul class="nav-items">
     <li class="nav-item" id="home" (click)="setActive('home')">
       <a routerLink="/home" routerLinkActive="is-active">Home</a>
@@ -10,6 +10,10 @@
     <li class="nav-item" id="profile" (click)="setActive('profile')">
       <a routerLink="/profile" routerLinkActive="is-active">Profile</a>
     </li>
+    <li class="nav-item" (click)="logout()">
+      <mat-icon matListItemIcon>logout</mat-icon>
+      <a>Kijelentkezés</a>
+    </li>
     } @else{
     <li class="nav-item" id="login" (click)="setActive('login')">
       <a routerLink="/login" routerLinkActive="is-active">Login</a>
@@ -20,4 +24,4 @@
     }
     <div class="nav-indicator" id="indicator" #indicator></div>
   </ul>
-</nav>
+</mat-nav-list>

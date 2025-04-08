@@ -11,10 +11,8 @@ import {
   ViewChild,
   ViewChildren,
 } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatListModule, MatNavList } from '@angular/material/list';
 
 import {
   NavigationEnd,
@@ -25,7 +23,7 @@ import {
 
 @Component({
   selector: 'app-menu',
-  imports: [RouterLinkActive, RouterLink],
+  imports: [RouterLinkActive, RouterLink, MatIconModule, MatListModule],
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
 })
