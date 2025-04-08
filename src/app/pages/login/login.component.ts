@@ -46,7 +46,7 @@ export class LoginComponent {
       localStorage.setItem('isLoggedIn', 'true');
 
       setTimeout(() => {
-        window.location.href = '/home';
+        this.router.navigate(['/home']);
       }, 3000);
     } else {
       this.loginError = 'Invalid email or password!';

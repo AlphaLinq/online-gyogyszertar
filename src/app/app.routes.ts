@@ -5,6 +5,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { MedicinesComponent } from './pages/medicines/medicines.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
+import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 
 export const routes: Routes = [
   {
@@ -12,14 +13,6 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/home/home.component').then((m) => m.HomeComponent),
   },
-
-  /*{
-    path: 'medicines',
-    loadComponent: () =>
-      import('./pages/medicines/medicines.component').then(
-        (m) => m.MedicinesComponent
-      ),
-  },*/
   {
     path: 'medicines',
     loadComponent: () =>
@@ -46,10 +39,19 @@ export const routes: Routes = [
       import('./pages/signup/signup.component').then((m) => m.SignupComponent),
   },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
+
+  {
+    path: '**',
+    loadComponent: () =>
+      import('./shared/page-not-found/page-not-found.component').then(
+        (m) => m.PageNotFoundComponent
+      ),
+  },
 ];
 
+/*
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {}*/
