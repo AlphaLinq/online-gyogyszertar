@@ -1,7 +1,23 @@
-body {
-  background-image: url("../../../../public/upscalemedia-transformed.jpeg");
-  background-size: cover;
-  background-color: #90e1f5;
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; /* A kép szélessége az egész oldal */
+  height: 100%; /* A kép magassága az egész oldal */
+  object-fit: cover; /* A kép arányosan kitölti a területet */
+  z-index: -1; /* A kép a tartalom mögött jelenjen meg */
+}
+
+body,
+.home-container {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  justify-content: center;
+  height: 100vh;
 }
 
 header {
@@ -13,6 +29,7 @@ header {
 
 .home-container {
   padding: 10px 30px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   text-align: center;

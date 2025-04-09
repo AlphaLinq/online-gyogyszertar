@@ -1,12 +1,15 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { User } from '../../models/User';
 import { ProfileObjects } from '../../shared/constans';
-import { NgFor } from '@angular/common';
-import { MedicineObjects } from '../../shared/const_medicines';
+import { CommonModule } from '@angular/common';
+import { CartService } from '../../shared/services/cart.service';
+import { Medicine } from '../../models/Medicine';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { CurrencyPipe } from '../../shared/pipes/currency.pipe';
 
 @Component({
   selector: 'app-profile',
-  imports: [NgFor],
+  imports: [CommonModule, MatCardModule, MatIconModule, CurrencyPipe],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss',
 })
@@ -15,17 +18,41 @@ export class ProfileComponent {
 
   ProfileObject = ProfileObjects;
   id: number = 0;
-  cartEntries: [string, number][] = [];
-  totalPrice: number = 0;
+  //totalPrice: number = 0;
   currentProfile = ProfileObjects[this.id];
+
+  constructor(private cartService: CartService) {}
+
+  get CartEntries(): { [id: string]: { product: Medicine; quantity: number } } {
+    return this.cartService.getCartEntries();
+  }
+
+  get totalPrice(): number {
+    return this.cartService.getTotalPrice();
+  }
+
+  get totalQuantity(): number {
+    return this.cartService.getTotalQuantity();
+  }
+
+  removeItem(id: string): void {
+    this.cartService.removeFromCart(id);
+  }
+
+  clearCart(): void {
+    this.cartService.clearCart();
+  }
 
   reload(event: any) {
     this.id = event.target.value - 1;
-    const value = (event.target as HTMLSelectElement).value;
     this.currentProfile = this.ProfileObject[this.id];
-    this.updateCart();
-    console.log('Current: ' + this.totalPrice);
   }
+
+  /*get totalPrice() {
+    return this.cartService.getTotalPrice();
+  }
+
+  
 
   updateCart(): void {
     this.cartEntries = Object.entries(this.currentProfile.cart);
@@ -39,5 +66,5 @@ export class ProfileComponent {
 
   ngOnInit(): void {
     this.cartEntries = Object.entries(this.ProfileObject[this.id]?.cart || {});
-  }
+  }*/
 }

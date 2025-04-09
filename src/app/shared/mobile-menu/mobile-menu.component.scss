@@ -2,9 +2,21 @@ mat-nav-list {
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 0;
+  padding-top: 10px;
+  font-size: 30px;
+  gap: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: purple;
 }
 
 mat-list-item {
   width: 100%;
+}
+
+mat-icon {
+  font-size: 1.5rem;
+  padding-right: 5px;
 }

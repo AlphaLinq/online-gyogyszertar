@@ -16,6 +16,7 @@
   border: 5px solid black;
   border-radius: 20px;
   background-color: #60a4db;
+  flex: 1;
 }
 
 .user-info:hover {
@@ -55,4 +56,18 @@ h2 {
     width: 100%;
     margin: 10px 0;
   }
+}
+
+.cart-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  justify-content: center;
+  align-items: start;
+}
+
+img {
+  max-width: 30%;
+  aspect-ratio: 3/2;
+  object-fit: contain;
 }

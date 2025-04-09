@@ -4,4 +4,5 @@ export interface Medicine {
   price: number;
   description: string;
   png: string;
+  type: string;
 }

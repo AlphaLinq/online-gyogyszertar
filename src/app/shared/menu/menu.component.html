@@ -1,14 +1,20 @@
 <mat-nav-list class="navbar">
   <ul class="nav-items">
     <li class="nav-item" id="home" (click)="setActive('home')">
-      <a routerLink="/home" routerLinkActive="is-active">Home</a>
+      <a routerLink="/home" routerLinkActive="is-active">
+        <mat-icon>home</mat-icon>Főoldal</a
+      >
     </li>
     <li class="nav-item" id="medicines" (click)="setActive('medicines')">
-      <a routerLink="/medicines" routerLinkActive="is-active">Medicines</a>
+      <a routerLink="/medicines" routerLinkActive="is-active"
+        ><mat-icon>medical_services</mat-icon>Gyógyszerek</a
+      >
     </li>
     @if (isLoggedIn){
     <li class="nav-item" id="profile" (click)="setActive('profile')">
-      <a routerLink="/profile" routerLinkActive="is-active">Profile</a>
+      <a routerLink="/profile" routerLinkActive="is-active"
+        ><mat-icon>account_circle</mat-icon>Profil</a
+      >
     </li>
     <li class="nav-item" (click)="logout()">
       <mat-icon matListItemIcon>logout</mat-icon>
@@ -16,10 +22,9 @@
     </li>
     } @else{
     <li class="nav-item" id="login" (click)="setActive('login')">
-      <a routerLink="/login" routerLinkActive="is-active">Login</a>
-    </li>
-    <li class="nav-item" id="signup" (click)="setActive('signup')">
-      <a routerLink="/signup" routerLinkActive="is-active">Sign up</a>
+      <a routerLink="/login" routerLinkActive="is-active"
+        ><mat-icon>login</mat-icon>Login</a
+      >
     </li>
     }
     <div class="nav-indicator" id="indicator" #indicator></div>

@@ -5,10 +5,7 @@ export const ProfileObjects = [
     lastName: 'János',
     email: 'nagy.janika@example.com',
     password: 'kisyeti',
-    cart: {
-      'c-vitamin': 1,
-      algoflex: 2,
-    },
+    cart: {},
   },
   {
     id: '1',
