@@ -24,10 +24,17 @@
       <div class="cart">
         <p>Kosaram tartalma:</p>
         <ul>
-          <li *ngFor="let item of basketEntries">
-            {{ item[0] }} : {{ item[1] }}
-          </li>
+          @for(item of cartEntries; track item[0]){
+          {{
+            item[0]
+          }}
+          :
+          {{
+            item[1]
+          }}
+          }
         </ul>
+        <p>Végösszeg: {{ totalPrice }}</p>
       </div>
     </section>
   </main>

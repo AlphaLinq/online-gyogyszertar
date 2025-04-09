@@ -8,5 +8,5 @@ export interface User {
   };
   email: string;
   password: string;
-  basket: Medicine[];
+  cart: Medicine[];
 }

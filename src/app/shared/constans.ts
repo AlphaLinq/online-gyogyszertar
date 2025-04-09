@@ -5,9 +5,9 @@ export const ProfileObjects = [
     lastName: 'János',
     email: 'nagy.janika@example.com',
     password: 'kisyeti',
-    basket: {
-      'v-vitamin': 1,
-      fajdalomcsillapito: 1,
+    cart: {
+      'c-vitamin': 1,
+      algoflex: 2,
     },
   },
   {
@@ -16,7 +16,7 @@ export const ProfileObjects = [
     lastName: 'Alma',
     email: 'vigyaaazzz@example.com',
     password: 'faszombrainrotgecikbemar',
-    basket: {
+    cart: {
       peniszgyuru: 1,
       algoflex: 2,
     },

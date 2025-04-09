@@ -1,6 +1,6 @@
 export const MedicineObjects = [
   {
-    id: '0',
+    id: 'algoflex',
     name: 'Algoflex Rapid',
     price: '2500',
     description: 'Fejfájás ellen tökéletes',
@@ -8,7 +8,7 @@ export const MedicineObjects = [
     type: 'painkillers',
   },
   {
-    id: '1',
+    id: 'c-vitamin',
     name: 'C Vitamin',
     price: '3000',
     description: 'C vitamin az egészségért!',

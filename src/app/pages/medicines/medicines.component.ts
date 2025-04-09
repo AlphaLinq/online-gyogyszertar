@@ -5,6 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
+import { Medicine } from '../../models/Medicine';
 
 @Component({
   selector: 'app-medicines',
@@ -13,16 +14,9 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './medicines.component.scss',
 })
 export class MedicinesComponent {
-  addToCart(_t5: {
-    id: string;
-    name: string;
-    price: string;
-    description: string;
-    png: string;
-    type: string;
-  }) {
-    throw new Error('Method not implemented.');
-  }
+  cartEntries: { [id: string]: { product: Medicine; quantity: number } } = {};
+
+  addToCart() {}
   MedicineObject = MedicineObjects;
   filteredMedicines = MedicineObjects;
   title: String = 'Gyógyszerek';
