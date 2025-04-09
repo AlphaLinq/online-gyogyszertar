@@ -5,18 +5,45 @@ mat-nav-list {
   padding-top: 10px;
   font-size: 30px;
   gap: 20px;
+  background: linear-gradient(135deg, #180222, #3f016b); /* Lilás háttér */
+  box-shadow: 0 0 10px var(--primary-color); /* Neon hatás */
+  border-radius: 10px;
+  height: 100vh;
 }
 
 a {
   text-decoration: none;
-  color: purple;
+  color: var(--text-color); /* Fehér szöveg */
+  font-family: "Orbitron", sans-serif; /* Futurisztikus betűtípus */
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+a:hover {
+  color: var(--accent-color); /* Neon rózsaszín hover */
+  text-shadow: 0 0 10px var(--accent-color), 0 0 20px var(--secondary-color);
 }
 
 mat-list-item {
   width: 100%;
+  padding: 10px;
+  border: 1px solid var(--primary-color); /* Neon lila szegély */
+  border-radius: 5px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+mat-list-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px var(--accent-color), 0 0 30px var(--secondary-color);
 }
 
 mat-icon {
   font-size: 1.5rem;
   padding-right: 5px;
+  color: var(--secondary-color); /* Neon kék ikonok */
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+mat-icon:hover {
+  color: var(--accent-color); /* Neon rózsaszín hover */
+  transform: scale(1.2);
 }

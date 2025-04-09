@@ -16,14 +16,16 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar>
-      <button
-        mat-button
-        (click)="onToggleSidenav(sidenav)"
-        class="menu-toggle-button"
-      >
-        <mat-icon>menu</mat-icon>
-      </button>
-      <div>Gyógyszertár</div>
+      <div class="menu-container">
+        <button
+          mat-button
+          (click)="onToggleSidenav(sidenav)"
+          class="menu-toggle-button"
+        >
+          <mat-icon>menu</mat-icon>
+        </button>
+        <label for="menu-toggle-button">Menü</label>
+      </div>
     </mat-toolbar>
     <router-outlet />
   </mat-sidenav-content>

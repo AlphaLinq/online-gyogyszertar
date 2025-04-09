@@ -1,11 +1,16 @@
+.profile-container {
+  font-family: "Orbitron", sans-serif;
+}
+
 .user-info {
   grid-template-rows: 100px 50px 100px; // adatok közti hézagokat ezzel állítsd át
-  background-color: rgb(80, 226, 226);
+  background-color: var(--background-color);
   text-align: center;
   margin: 10px 60px;
   border-radius: 15px;
   display: grid;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px var(--primary-color);
+  color: var(--text-color);
 }
 
 .user-info ul {
@@ -13,49 +18,57 @@
 }
 
 .cart {
-  border: 5px solid black;
+  border: 5px solid var(--primary-color);
   border-radius: 20px;
-  background-color: #60a4db;
+  background-color: var(--background-color);
   flex: 1;
-}
-
-.user-info:hover {
-  transform: scale(1.02);
-  transition: transform 0.3s ease;
+  color: var(--text-color);
 }
 
 .cart:hover {
-  border-color: darkgray;
+  border-color: var(--accent-color);
   transition: border-color 0.3s ease;
 }
 
 .profile-header {
-  background-color: #90ee90;
-  border-bottom: 3px solid black;
+  background-color: var(--secondary-color);
+  border-bottom: 3px solid var(--accent-color);
   text-align: start;
   font-size: larger;
   padding-top: -5px;
   margin-top: -5px;
 
   font-size: 1.5rem;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Orbitron", sans-serif; /* Futurisztikus betűtípus */
+  color: var(--text-color);
 }
 
-h2 {
-  margin: 0;
-  padding: 0;
-}
+@media (max-width: 932px) {
+  .cart-grid {
+    grid-template-columns: 1fr; /* Egy oszlop mobil nézetben */
+  }
 
-@media (max-width: 768px) {
   .user-info {
-    margin: 10px 20px;
+    margin: 10px;
     grid-template-rows: auto auto auto;
   }
 
   .cart {
-    width: 100%;
     margin: 10px 0;
   }
+}
+
+.cart-card {
+  background: var(--background-color);
+  color: var(--text-color);
+  border: 1px solid var(--primary-color);
+  box-shadow: 0 0 10px var(--primary-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cart-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px var(--accent-color), 0 0 30px var(--secondary-color);
 }
 
 .cart-grid {
@@ -70,4 +83,39 @@ img {
   max-width: 30%;
   aspect-ratio: 3/2;
   object-fit: contain;
+}
+
+button {
+  background: var(--primary-color); /* Neon lila */
+  color: var(--text-color); /* Fehér szöveg */
+  border: 2px solid var(--accent-color); /* Neon rózsaszín szegély */
+  box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--accent-color);
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: var(--accent-color); /* Neon rózsaszín hover */
+  box-shadow: 0 0 20px var(--accent-color), 0 0 30px var(--secondary-color); /* Neon hatás */
+}
+
+@keyframes neonGlow {
+  0% {
+    box-shadow: 0 0 10px var(--primary-color);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--accent-color);
+  }
+  100% {
+    box-shadow: 0 0 10px var(--primary-color);
+  }
+}
+
+button {
+  animation: neonGlow 1.5s infinite alternate;
+}
+
+mat-icon {
+  color: var(--text-color);
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
 }

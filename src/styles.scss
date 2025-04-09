@@ -1,4 +1,53 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #180222, #3f016b);
+  background-attachment: fixed;
+  background-size: cover;
+  font-family: "Orbitron", sans-serif;
+  color: var(--text-color);
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, #ffffff 1px, transparent 1px);
+  background-size: 100px 100px; /* A pontok távolsága */
+  opacity: 0.3; /* Halvány pontok */
+  animation: moveStars 20s linear infinite; /* Lassú mozgás */
+}
+
+@keyframes moveStars {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-50px, -50px); /* Lassú mozgás balra és felfelé */
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+:root {
+  --background-color: #0d0d0d;
+  --primary-color: #8a2be2;
+  --secondary-color: #00d4ff;
+  --accent-color: #ff007f;
+  --text-color: #ffffff;
+  --muted-text-color: #aaaaaa;
+}

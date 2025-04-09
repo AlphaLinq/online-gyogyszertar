@@ -2,10 +2,21 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%; /* A kép szélessége az egész oldal */
-  height: 100%; /* A kép magassága az egész oldal */
-  object-fit: cover; /* A kép arányosan kitölti a területet */
-  z-index: -1; /* A kép a tartalom mögött jelenjen meg */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+  animation: backgroundAnimation 10s infinite alternate;
+}
+
+@keyframes backgroundAnimation {
+  0% {
+    background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+  }
+  100% {
+    background: linear-gradient(135deg, #1a1a1a, #0d0d0d);
+  }
 }
 
 body,
@@ -13,11 +24,12 @@ body,
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100vh;
+  max-height: 100vh;
   overflow-x: hidden;
   position: relative;
   justify-content: center;
   height: 100vh;
+  overflow: hidden;
 }
 
 header {
@@ -43,4 +55,17 @@ header {
   border-radius: 8px;
   box-shadow: 0 4px 60px rgba(0, 0, 0, 0.25);
   max-width: 500px;
+}
+
+button.medicines {
+  background: var(--primary-color);
+  color: var(--text-color);
+  border: 2px solid var(--accent-color);
+  box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--accent-color);
+  transition: all 0.3s ease;
+}
+
+button.medicines:hover {
+  background: var(--accent-color);
+  box-shadow: 0 0 20px var(--accent-color), 0 0 30px var(--secondary-color);
 }

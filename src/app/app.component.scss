@@ -1,8 +1,28 @@
 mat-toolbar {
-  display: flex;
+  background: #280736;
+  color: var(--text-color);
+  font-family: "Orbitron", sans-serif;
   justify-content: center;
-  align-items: center;
-  height: 90px;
+}
+
+.menu-container {
+  margin-right: auto;
+  align-items: left;
+  gap: 10px; /* Távolság a gomb és a szöveg között */
+}
+
+.menu-toggle-button {
+  margin-right: 0; /* Balra igazítás */
+  color: var(--text-color);
+}
+
+.menu-label {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--text-color);
+}
+mat-icon {
+  color: var(--secondary-color);
 }
 
 .desktop-menu {
@@ -11,7 +31,7 @@ mat-toolbar {
   align-items: center;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 932px) {
   .desktop-menu {
     display: none; /* Mobil nézetben rejtett */
   }

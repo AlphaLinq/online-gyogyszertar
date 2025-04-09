@@ -59,6 +59,6 @@ export class AppComponent {
   }
 
   private checkViewport() {
-    this.isMobile = window.innerWidth <= 768; // Mobil nézet, ha az ablak szélessége <= 768px
+    this.isMobile = window.innerWidth <= 932; // Mobil nézet, ha az ablak szélessége <= 768px
   }
 }

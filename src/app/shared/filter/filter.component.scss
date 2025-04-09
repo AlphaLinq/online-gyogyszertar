@@ -1,25 +1,33 @@
 .filter-panel {
-  background-color: lightgreen;
+  background: white; /* Lilás gradient */
   border-radius: 15px;
-  padding: 0px 25px;
+  padding: 20px 25px;
   width: 200px;
   position: sticky;
   left: 20px;
-  top: 1500px;
-
-  box-shadow: 0px, 5px, 15px, rgba(0, 0, 0, 0.25);
+  top: 20px; /* A top értéket állítsd kisebbre */
+  box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--accent-color); /* Neon hatás */
+  color: var(--text-color);
+  font-family: "Orbitron", sans-serif; /* Futurisztikus betűtípus */
 }
 
-.filter-panel ul {
-  list-style-type: none;
-  padding: 0;
+mat-card-title {
+  color: var(--primary-color);
 }
 
-.filter-panel li {
-  margin: 20px 0;
-}
+@media (max-width: 732px) {
+  .filter-panel {
+    width: 100%;
+    left: 0;
+    top: 10px;
+    padding: 15px;
+  }
 
-h2 {
-  color: rgb(112, 3, 3);
-  font-family: Arial, Helvetica, sans-serif;
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  .filter-panel li {
+    font-size: 0.9rem;
+  }
 }
