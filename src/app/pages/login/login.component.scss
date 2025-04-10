@@ -1,13 +1,23 @@
-$font: Arial, Helvetica, sans-serif;
+$font: "Orbitron", sans-serif;
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
 
 .container {
-  background-color: yellow;
-  margin: 50px auto;
+  margin: 0 auto;
   padding: 150px 30px 30px;
-  border: 4px solid black;
-  box-shadow: 0 100px 100px rgb(0 0 0 / 20%);
+  border: 4px solid var(--primary-color);
+  box-shadow: 0 0 20px var(--primary-color), 0 0 40px var(--accent-color);
   text-align: center;
   max-width: 400px;
+  color: var(--text-color);
+  font-family: $font;
+  border-radius: 15px;
 }
 
 .input-form {
@@ -20,29 +30,37 @@ mat-form-field {
   width: 100%;
   font-family: $font;
 
-  .mat-form-field-outline {
-    border-radius: 50px; // Lekerekített szélek
-  }
-
   .mat-form-field-label {
     font-family: $font;
-    color: black;
+    color: var(--text-color);
   }
 
   input {
-    background-color: lightyellow;
-    border-radius: 50px;
+    background: white;
+    border-radius: 15px;
     padding: 10px 20px;
+    color: var(--text-color);
+    box-shadow: 0 0 10px var(--primary-color);
   }
 }
 
 button {
-  background-color: lightblue !important;
+  background-color: var(--primary-color) !important;
+  color: var(--text-color);
   font-family: $font;
   font-weight: bold;
   cursor: pointer;
   border-radius: 50px;
   height: 50px;
+  border: 2px solid var(--accent-color);
+  box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--accent-color);
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: var(--accent-color);
+  box-shadow: 0 0 20px var(--accent-color), 0 0 30px var(--secondary-color);
+  transform: scale(1.05);
 }
 
 header {
@@ -51,15 +69,18 @@ header {
   font-size: x-large;
   font-family: $font;
   padding: 5px 0px;
+  color: var(--primary-color);
+  text-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--accent-color);
 }
 
 footer {
   margin: 40px 10px 10px 10px;
   text-align: center;
+  color: var(--text-color);
 }
 
 footer a {
-  color: blue;
+  color: var(--accent-color);
   text-decoration: underline;
   cursor: pointer;
 }

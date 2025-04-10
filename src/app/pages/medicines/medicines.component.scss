@@ -21,13 +21,13 @@
   flex-grow: 1;
   max-width: 800px;
   margin-top: 30px;
-  box-shadow: 0 0 10px var(--primary-color); /* Neon lila árnyék */
+  box-shadow: 0 0 10px var(--primary-color);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .medicine-card:hover {
   transform: scale(1.02);
-  box-shadow: 0 0 20px var(--accent-color), 0 0 30px var(--secondary-color); /* Neon hatás */
+  box-shadow: 0 0 20px var(--accent-color), 0 0 30px var(--secondary-color);
 }
 
 img {
@@ -35,47 +35,47 @@ img {
   aspect-ratio: 3/2;
   object-fit: contain;
   border-radius: 8px;
-  border: 1px solid var(--secondary-color); /* Neon kék szegély */
+  border: 1px solid var(--secondary-color);
   box-shadow: 0 0 10px var(--secondary-color);
 }
 
 button {
-  background: var(--primary-color); /* Neon lila */
-  color: var(--text-color); /* Fehér szöveg */
-  border: 2px solid var(--accent-color); /* Neon rózsaszín szegély */
+  background: var(--primary-color);
+  color: var(--text-color);
+  border: 2px solid var(--accent-color);
   box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--accent-color);
   transition: all 0.3s ease;
 }
 
 button:hover {
-  background: var(--accent-color); /* Neon rózsaszín hover */
-  box-shadow: 0 0 20px var(--accent-color), 0 0 30px var(--secondary-color); /* Neon hatás */
+  background: var(--accent-color);
+  box-shadow: 0 0 20px var(--accent-color), 0 0 30px var(--secondary-color);
 }
 
 .medicine-card mat-card-title {
   font-family: "Orbitron", sans-serif;
   font-size: 1.2rem;
-  color: var(--primary-color); /* Neon lila */
+  color: var(--primary-color);
 }
 
 .medicine-card mat-card-subtitle {
   font-family: "Orbitron", sans-serif;
   font-size: 1rem;
-  color: var(--secondary-color); /* Neon kék */
+  color: var(--secondary-color);
 }
 
 .medicine-card mat-card-content {
   font-family: "Orbitron", sans-serif;
   font-size: 1rem;
-  color: var(--secondary-color); /* Neon kék */
+  color: var(--secondary-color);
 }
 
 @media (max-width: 768px) {
   .medicine-container {
-    grid-template-columns: 1fr; /* Egy oszlop mobil nézetben */
+    grid-template-columns: 1fr;
   }
 
   .medicine-card {
-    max-width: 100%; /* Teljes szélesség mobilon */
+    max-width: 100%;
   }
 }

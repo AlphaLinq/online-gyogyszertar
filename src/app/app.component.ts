@@ -1,10 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
-import { NgIf } from '@angular/common';
 import { MenuComponent } from './shared/menu/menu.component';
-import { MedicinesComponent } from './pages/medicines/medicines.component';
-import { ProfileComponent } from './pages/profile/profile.component';
 import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -15,11 +11,7 @@ import { MobileMenuComponent } from './shared/mobile-menu/mobile-menu.component'
   selector: 'app-root',
   imports: [
     RouterOutlet,
-    HomeComponent,
     MenuComponent,
-    NgIf,
-    MedicinesComponent,
-    ProfileComponent,
     MatSidenavModule,
     MatToolbarModule,
     MatButtonModule,

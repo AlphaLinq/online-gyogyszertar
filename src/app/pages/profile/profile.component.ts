@@ -41,6 +41,7 @@ export class ProfileComponent {
 
   clearCart(): void {
     this.cartService.clearCart();
+    console.log('JA AMÚGY MŰKÖDÖK NE IS TÖRÖDJ VELEM');
   }
 
   reload(event: any) {

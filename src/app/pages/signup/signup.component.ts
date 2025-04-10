@@ -10,14 +10,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { User } from '../../models/User';
 
 @Component({
   selector: 'app-signup',
   imports: [
     RouterLink,
-    RouterLinkActive,
     ReactiveFormsModule,
     MatProgressSpinnerModule,
     MatInputModule,

@@ -1,12 +1,21 @@
+body {
+  display: flex;
+  margin: 0;
+}
+
 .profile-container {
   font-family: "Orbitron", sans-serif;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 .user-info {
   grid-template-rows: 100px 50px 100px; // adatok közti hézagokat ezzel állítsd át
   background-color: var(--background-color);
   text-align: center;
-  margin: 10px 60px;
+  margin: 0 auto;
   border-radius: 15px;
   display: grid;
   box-shadow: 0 4px 8px var(--primary-color);
@@ -23,6 +32,8 @@
   background-color: var(--background-color);
   flex: 1;
   color: var(--text-color);
+  position: relative;
+  z-index: 1; //Mobilnézethez kell dániel ki ne merd törölni mert akkor nem működik a gomb :)
 }
 
 .cart:hover {
@@ -39,13 +50,13 @@
   margin-top: -5px;
 
   font-size: 1.5rem;
-  font-family: "Orbitron", sans-serif; /* Futurisztikus betűtípus */
+  font-family: "Orbitron", sans-serif;
   color: var(--text-color);
 }
 
 @media (max-width: 932px) {
   .cart-grid {
-    grid-template-columns: 1fr; /* Egy oszlop mobil nézetben */
+    grid-template-columns: 1fr;
   }
 
   .user-info {
@@ -86,16 +97,16 @@ img {
 }
 
 button {
-  background: var(--primary-color); /* Neon lila */
-  color: var(--text-color); /* Fehér szöveg */
-  border: 2px solid var(--accent-color); /* Neon rózsaszín szegély */
+  background: var(--primary-color);
+  color: var(--text-color);
+  border: 2px solid var(--accent-color);
   box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--accent-color);
   transition: all 0.3s ease;
 }
 
 button:hover {
-  background: var(--accent-color); /* Neon rózsaszín hover */
-  box-shadow: 0 0 20px var(--accent-color), 0 0 30px var(--secondary-color); /* Neon hatás */
+  background: var(--accent-color);
+  box-shadow: 0 0 20px var(--accent-color), 0 0 30px var(--secondary-color);
 }
 
 @keyframes neonGlow {

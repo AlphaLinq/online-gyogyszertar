@@ -1,14 +1,14 @@
 .filter-panel {
-  background: white; /* Lilás gradient */
+  background: white;
   border-radius: 15px;
   padding: 20px 25px;
   width: 200px;
   position: sticky;
   left: 20px;
-  top: 20px; /* A top értéket állítsd kisebbre */
-  box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--accent-color); /* Neon hatás */
+  top: 20px;
+  box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--accent-color);
   color: var(--text-color);
-  font-family: "Orbitron", sans-serif; /* Futurisztikus betűtípus */
+  font-family: "Orbitron", sans-serif;
 }
 
 mat-card-title {
