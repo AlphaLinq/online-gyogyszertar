@@ -15,4 +15,13 @@ export const MedicineObjects = [
     png: 'c_vitamin.png',
     type: 'vitamins',
   },
+  {
+    id: 'nurofen',
+    name: 'Nurofen',
+    price: 4000,
+    description:
+      'A Nurofen Rapid Forte 400 mg lágy kapszula felnőttek és 40 kg-os testtömeg felett (12 éves, és annál idősebb) serdülők esetében alkalmas enyhe és közepesen erős fájdalmak, pl. fejfájás, menstruációs fájdalmak, fogfájás rövidtávú tüneti kezelésére, a meghűléses betegségek esetén láz és fájdalom csillapítására.',
+    png: 'nurofen.jpg',
+    type: 'painkillers',
+  },
 ];

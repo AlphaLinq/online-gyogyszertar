@@ -1,12 +1,12 @@
 <body>
   <div class="signup-container">
-    <h1>Create Account</h1>
+    <h1>Fiók létrehozása</h1>
 
     @if (isLoading) {
     <div class="loading-container">
-      <h2>Registration in progress</h2>
+      <h2>Regisztrálás folyamatban...</h2>
       <mat-spinner diameter="50"></mat-spinner>
-      <p>Please wait...</p>
+      <p>Kis türelmét kérjük...</p>
     </div>
     } @if (showForm) {
     <form [formGroup]="signUpForm" (ngSubmit)="signup()" class="signup-form">
@@ -18,34 +18,36 @@
 
       <div class="name-row" formGroupName="name">
         <mat-form-field appearance="outline">
-          <mat-label>First Name</mat-label>
+          <mat-label>Vezetéknék</mat-label>
           <input matInput formControlName="firstname" />
           <mat-icon matSuffix>person</mat-icon>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
-          <mat-label>Last Name</mat-label>
+          <mat-label>Keresztnév</mat-label>
           <input matInput formControlName="lastname" />
           <mat-icon matSuffix>person</mat-icon>
         </mat-form-field>
       </div>
 
       <mat-form-field appearance="outline">
-        <mat-label>Password</mat-label>
+        <mat-label>Jelszó</mat-label>
         <input matInput type="password" formControlName="password" />
         <mat-icon matSuffix>lock</mat-icon>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Confirm Password</mat-label>
+        <mat-label>Jelszó újra</mat-label>
         <input matInput type="password" formControlName="rePassword" />
         <mat-icon matSuffix>lock</mat-icon>
       </mat-form-field>
 
       <div class="buttons-row">
-        <button mat-flat-button color="primary" type="submit">Register</button>
+        <button mat-flat-button color="primary" type="submit">
+          Regisztráció
+        </button>
         <button mat-flat-button [routerLink]="['/login']">
-          Already have an account?
+          Van már fiókod?
         </button>
       </div>
     </form>
