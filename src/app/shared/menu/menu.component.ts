@@ -20,6 +20,8 @@ import {
   RouterLinkActive,
   Router,
 } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-menu',
@@ -32,6 +34,12 @@ export class MenuComponent {
 
   @ViewChild('indicator') indicator!: ElementRef;
   @Output() logoutEvent = new EventEmitter<void>();
+
+  private authSubscription?: Subscription;
+
+  constructor(private authService: AuthService) {
+    console.log('Constructor called');
+  }
 
   ngAfterViewInit(): void {
     this.setActive('home');
@@ -55,7 +63,12 @@ export class MenuComponent {
   }
 
   logout() {
-    localStorage.setItem('isLoggedIn', 'false');
-    window.location.href = '/home';
+    this.authService.signOut().then(() => {
+      this.logoutEvent.emit();
+      localStorage.setItem('isLoggedIn', 'false');
+    });
+
+    //localStorage.setItem('isLoggedIn', 'false');
+    //window.location.href = '/home';
   }
 }

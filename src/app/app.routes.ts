@@ -1,11 +1,5 @@
-import { Routes, RouterModule } from '@angular/router';
-import { NgModule } from '@angular/core';
-import { HomeComponent } from './pages/home/home.component';
-import { ProfileComponent } from './pages/profile/profile.component';
-import { MedicinesComponent } from './pages/medicines/medicines.component';
-import { LoginComponent } from './pages/login/login.component';
-import { SignupComponent } from './pages/signup/signup.component';
-import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
+import { Routes } from '@angular/router';
+import { authGuard, publicGuard } from './shared/guards/auth/auth.guard';
 
 export const routes: Routes = [
   {
@@ -27,16 +21,19 @@ export const routes: Routes = [
       import('./pages/profile/profile.component').then(
         (m) => m.ProfileComponent
       ),
+    canActivate: [authGuard],
   },
   {
     path: 'login',
     loadComponent: () =>
       import('./pages/login/login.component').then((m) => m.LoginComponent),
+    canActivate: [publicGuard],
   },
   {
     path: 'signup',
     loadComponent: () =>
       import('./pages/signup/signup.component').then((m) => m.SignupComponent),
+    canActivate: [publicGuard],
   },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 

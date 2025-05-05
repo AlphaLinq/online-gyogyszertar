@@ -6,6 +6,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MobileMenuComponent } from './shared/mobile-menu/mobile-menu.component';
+import { AuthService } from './shared/services/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -29,11 +31,16 @@ export class AppComponent {
   onResize() {
     this.checkViewport();
   }
+  private authSubscription?: Subscription;
 
-  constructor() {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
     this.checkLoginStatus();
+    this.authSubscription = this.authService.currentUser.subscribe((user) => {
+      this.isLoggedIn = !!user;
+      localStorage.setItem('isLoggedIn', this.isLoggedIn ? 'true' : 'false');
+    });
   }
 
   checkLoginStatus(): void {
@@ -41,9 +48,11 @@ export class AppComponent {
   }
 
   logout(): void {
-    localStorage.setItem('isLoggedIn', 'false');
+    this.authService.signOut();
+
+    /*localStorage.setItem('isLoggedIn', 'false');
     this.isLoggedIn = false;
-    window.location.href = '/home';
+    window.location.href = '/home';*/
   }
 
   onToggleSidenav(sidenav: MatSidenav) {

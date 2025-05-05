@@ -48,24 +48,4 @@ export class ProfileComponent {
     this.id = event.target.value - 1;
     this.currentProfile = this.ProfileObject[this.id];
   }
-
-  /*get totalPrice() {
-    return this.cartService.getTotalPrice();
-  }
-
-  
-
-  updateCart(): void {
-    this.cartEntries = Object.entries(this.currentProfile.cart);
-    this.totalPrice = this.cartEntries.reduce((sum, [itemName, quantity]) => {
-      const match = MedicineObjects.find((med) =>
-        med.name.toLowerCase().includes(itemName.toLowerCase())
-      );
-      return sum + (match ? +match.price * quantity : 0);
-    }, 0);
-  }
-
-  ngOnInit(): void {
-    this.cartEntries = Object.entries(this.ProfileObject[this.id]?.cart || {});
-  }*/
 }

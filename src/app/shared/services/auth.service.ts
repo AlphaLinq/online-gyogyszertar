@@ -1,0 +1,41 @@
+import { Injectable } from '@angular/core';
+import {
+  Auth,
+  authState,
+  signInWithEmailAndPassword,
+  User,
+  UserCredential,
+} from '@angular/fire/auth';
+import { Router } from '@angular/router';
+import { signOut } from '@firebase/auth';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class AuthService {
+  currentUser: Observable<User | null>;
+
+  constructor(private auth: Auth, private router: Router) {
+    this.currentUser = authState(this.auth);
+  }
+
+  signIn(email: string, password: string): Promise<UserCredential> {
+    return signInWithEmailAndPassword(this.auth, email, password);
+  }
+
+  signOut(): Promise<void> {
+    localStorage.setItem('isLoggedIn', 'false');
+    return signOut(this.auth).then(() => {
+      this.router.navigateByUrl('/home');
+    });
+  }
+
+  isLoggedIn(): Observable<User | null> {
+    return this.currentUser;
+  }
+
+  updateLogInStatus(isLoggedIn: boolean): void {
+    localStorage.setItem('isLoggedIn', isLoggedIn ? 'true' : 'false');
+  }
+}
