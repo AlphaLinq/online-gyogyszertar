@@ -1,7 +1,7 @@
 import { Medicine } from './Medicine';
 
 export interface User {
-  id: number;
+  id: string;
   name: {
     firstName: string;
     lastName: string;

@@ -1,27 +1,21 @@
 <body>
   <div class="profile-container">
-    <!--<header>
-      <select (change)="reload($event)">
-        <option [value]="1">1</option>
-        <option [value]="2">2</option>
-      </select>
-    </header>-->
+    {{ getUserInitials() }}
 
     <main>
       <header class="profile-header">
         <div>
           <h1>
             Szia
-            {{ ProfileObject[id].firstName }}
-            {{ ProfileObject[id].lastName }}!
+            {{ user?.name?.firstName }} {{ user?.name?.lastName }} !
           </h1>
         </div>
       </header>
 
       <section class="user-info">
         <h2>Adataim</h2>
-        <div>Email címem: {{ ProfileObject[id].email }}</div>
-        <p>Jelszavam: {{ ProfileObject[id].password }}</p>
+        <div>Email címem: {{ user?.email }}</div>
+        <p></p>
         <div class="cart">
           <h3>Kosaram tartalma:</h3>
           <div class="cart-grid">

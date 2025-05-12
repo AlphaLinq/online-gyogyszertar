@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Router, RouterLink } from '@angular/router';
 import { User } from '../../models/User';
+import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -52,7 +53,7 @@ export class SignupComponent {
   signupError = '';
   id: number = 2;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   signup() {
     if (this.signUpForm.invalid) {
@@ -64,13 +65,53 @@ export class SignupComponent {
     const rePassword = this.signUpForm.get('rePassword');
 
     if (password?.value !== rePassword?.value) {
-      return;
+      this.signupError = 'A két jelszó nem egyezik.';
     }
 
     this.isLoading = true;
     this.showForm = false;
 
-    const newUser: User = {
+    const userData: Partial<User> = {
+      name: {
+        firstName: this.signUpForm.value.name?.firstname || '',
+        lastName: this.signUpForm.value.name?.lastname || '',
+      },
+      email: this.signUpForm.value.email || '',
+      cart: [],
+    };
+
+    const email = this.signUpForm.value.email || '';
+    const pw = this.signUpForm.value.password || '';
+
+    this.authService
+      .signUp(email, pw, userData)
+      .then((userCredential) => {
+        console.log('User signed up successfully:', userCredential);
+        this.authService.updateLogInStatus(true);
+        this.router.navigateByUrl('home');
+      })
+      .catch((error) => {
+        console.error('Regisztrációs hiba: ', error);
+        this.isLoading = false;
+        this.showForm = true;
+
+        switch (error.code) {
+          case 'auth/email-already-in-use':
+            this.signupError = 'Ez az email cím már használatban van.';
+            break;
+          case 'auth/invalid-email':
+            this.signupError = 'Érvénytelen email cím.';
+            break;
+          case 'auth/weak-password':
+            this.signupError = 'A jelszó túl gyenge.';
+            break;
+          default:
+            this.signupError = 'Ismeretlen hiba történt.';
+        }
+      });
+  }
+}
+/*const newUser: User = {
       id: this.id,
       name: {
         firstName: this.signUpForm.value.name?.firstname || '',
@@ -89,6 +130,4 @@ export class SignupComponent {
     localStorage.setItem('isLoggedIn', 'true');
     setTimeout(() => {
       this.router.navigateByUrl('home');
-    }, 2000);
-  }
-}
+    }, 2000);*/

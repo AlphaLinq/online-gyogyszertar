@@ -2,21 +2,27 @@ import { Injectable } from '@angular/core';
 import {
   Auth,
   authState,
+  User as FirebaseUser,
   signInWithEmailAndPassword,
-  User,
   UserCredential,
 } from '@angular/fire/auth';
+import { collection, doc, Firestore, setDoc } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { signOut } from '@firebase/auth';
+import { createUserWithEmailAndPassword, signOut } from '@firebase/auth';
 import { Observable } from 'rxjs';
+import { User } from '../../models/User';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  currentUser: Observable<User | null>;
+  currentUser: Observable<FirebaseUser | null>;
 
-  constructor(private auth: Auth, private router: Router) {
+  constructor(
+    private auth: Auth,
+    private router: Router,
+    private firestore: Firestore
+  ) {
     this.currentUser = authState(this.auth);
   }
 
@@ -31,7 +37,42 @@ export class AuthService {
     });
   }
 
-  isLoggedIn(): Observable<User | null> {
+  async signUp(
+    email: string,
+    password: string,
+    userData: Partial<User>
+  ): Promise<UserCredential> {
+    try {
+      const UserCredential = await createUserWithEmailAndPassword(
+        this.auth,
+        email,
+        password
+      );
+
+      await this.createUserData(UserCredential.user.uid, {
+        ...userData,
+        id: UserCredential.user.uid,
+        email: email,
+        cart: [],
+      });
+
+      return UserCredential;
+    } catch (error) {
+      console.error('Hiba a regisztáció során', error);
+      throw error;
+    }
+  }
+
+  private async createUserData(
+    userId: string,
+    userData: Partial<User>
+  ): Promise<void> {
+    const userRef = doc(collection(this.firestore, 'Users'), userId);
+
+    return setDoc(userRef, userData);
+  }
+
+  isLoggedIn(): Observable<FirebaseUser | null> {
     return this.currentUser;
   }
 
