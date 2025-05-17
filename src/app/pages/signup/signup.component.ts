@@ -77,7 +77,7 @@ export class SignupComponent {
         lastName: this.signUpForm.value.name?.lastname || '',
       },
       email: this.signUpForm.value.email || '',
-      cart: [],
+      cart: {},
     };
 
     const email = this.signUpForm.value.email || '';
@@ -111,23 +111,3 @@ export class SignupComponent {
       });
   }
 }
-/*const newUser: User = {
-      id: this.id,
-      name: {
-        firstName: this.signUpForm.value.name?.firstname || '',
-        lastName: this.signUpForm.value.name?.lastname || '',
-      },
-      email: this.signUpForm.value.email || '',
-      password: this.signUpForm.value.password || '',
-      cart: [],
-    };
-
-    this.id += 1;
-
-    console.log('New User: ', newUser);
-    console.log('Form value: ', this.signUpForm.value);
-
-    localStorage.setItem('isLoggedIn', 'true');
-    setTimeout(() => {
-      this.router.navigateByUrl('home');
-    }, 2000);*/

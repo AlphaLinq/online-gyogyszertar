@@ -5,4 +5,5 @@ export interface Medicine {
   description: string;
   png: string;
   type: string;
+  quantity?: number;
 }

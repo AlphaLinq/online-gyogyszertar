@@ -9,7 +9,7 @@ import {
 import { collection, doc, Firestore, setDoc } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { createUserWithEmailAndPassword, signOut } from '@firebase/auth';
-import { Observable } from 'rxjs';
+import { firstValueFrom, Observable } from 'rxjs';
 import { User } from '../../models/User';
 
 @Injectable({
@@ -37,6 +37,10 @@ export class AuthService {
     });
   }
 
+  async getCurrentUser(): Promise<FirebaseUser | null> {
+    return await firstValueFrom(this.currentUser);
+  }
+
   async signUp(
     email: string,
     password: string,
@@ -53,7 +57,7 @@ export class AuthService {
         ...userData,
         id: UserCredential.user.uid,
         email: email,
-        cart: [],
+        cart: {},
       });
 
       return UserCredential;

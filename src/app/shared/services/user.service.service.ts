@@ -21,14 +21,14 @@ export class UserServiceService {
 
   getUserProfile(): Observable<{
     user: User | null;
-    cart: Medicine[];
+    cart: { [medicineId: string]: number };
   }> {
     return this.authService.currentUser.pipe(
       switchMap((authUser) => {
         if (!authUser) {
           return of({
             user: null,
-            cart: [],
+            cart: {},
           });
         }
         return from(this.fetchUserWithCart(authUser.uid));
@@ -38,47 +38,64 @@ export class UserServiceService {
 
   private async fetchUserWithCart(uid: string): Promise<{
     user: User | null;
-    cart: Medicine[];
+    cart: { [medicineId: string]: number };
   }> {
     try {
       const userDocRef = doc(this.firestore, 'Users', uid);
       const userSnapshot = await getDoc(userDocRef);
+
       if (!userSnapshot.exists()) {
         return {
           user: null,
-          cart: [],
+          cart: {},
         };
       }
 
       const userData = userSnapshot.data() as User;
       const user = { ...userData, id: uid };
 
-      if (!user.cart || user.cart.length === 0) {
+      const cartMap: { [medicineId: string]: number } = user.cart ?? {};
+
+      const medicineIds = Object.keys(cartMap);
+      if (medicineIds.length === 0) {
         return {
           user,
-          cart: [],
+          cart: {},
         };
       }
 
-      // Fetch the cart items for the user
-      const cartCollection = collection(this.firestore, 'Carts');
-      const q = query(cartCollection, where('userId', 'in', user.cart));
-      const cartSnapshot = await getDocs(q);
+      const medicinesCollection = collection(this.firestore, 'Medicines');
+      const medicines: Medicine[] = [];
 
-      const carts: Medicine[] = [];
-      cartSnapshot.forEach((doc) => {
-        carts.push({ ...doc.data(), id: doc.id } as Medicine);
-      });
+      const chunkSize = 10; // Firestore limit for "in" queries
+
+      for (let i = 0; i < medicineIds.length; i += chunkSize) {
+        const chunk = medicineIds.slice(i, i + chunkSize);
+        const q = query(medicinesCollection, where('__name__', 'in', chunk));
+        const querySnapshot = await getDocs(q);
+
+        querySnapshot.forEach((doc) => {
+          const data = doc.data() as Medicine;
+          const medicineId = doc.id;
+          const quantity = cartMap[medicineId];
+
+          medicines.push({
+            ...data,
+            id: medicineId,
+            quantity, // ⬅️ quantity from cart map
+          });
+        });
+      }
 
       return {
         user,
-        cart: carts,
+        cart: cartMap,
       };
     } catch (error) {
       console.error('Error fetching user or cart data:', error);
       return {
         user: null,
-        cart: [],
+        cart: {},
       };
     }
   }
