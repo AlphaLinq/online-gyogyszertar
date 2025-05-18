@@ -42,6 +42,13 @@ export const routes: Routes = [
         (m) => m.AddmedicineComponent
       ),
   },
+  {
+    path: 'update-medicine/:id',
+    loadComponent: () =>
+      import('./pages/updatemedicine/updatemedicine.component').then(
+        (m) => m.UpdatemedicineComponent
+      ),
+  },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 
   {

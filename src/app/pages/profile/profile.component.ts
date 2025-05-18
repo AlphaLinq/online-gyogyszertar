@@ -87,6 +87,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
     });
   }
 
+  clearSuccessMessage() {
+    this.successMessage = '';
+  }
+
   async removeItem(id: string): Promise<void> {
     await this.cartService.removeFromCart(id);
     await this.loadUserProfileAndCart();
@@ -94,6 +98,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   async clearCart(): Promise<void> {
     await this.cartService.clearCart();
+    this.successMessage = 'Kosár kiürítve';
+    setTimeout(() => (this.successMessage = ''), 2000);
     await this.loadUserProfileAndCart();
   }
 
@@ -119,9 +125,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
     return firstInitial + lastInitial;
   }
 
-  order() {
-    this.clearCart();
+  async order() {
+    await this.cartService.clearCart();
     this.successMessage = 'Megrendelés leadva';
     setTimeout(() => (this.successMessage = ''), 2000);
+    await this.loadUserProfileAndCart();
   }
 }

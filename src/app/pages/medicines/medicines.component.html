@@ -47,8 +47,14 @@
           <button mat-button color="primary" (click)="addToCart(medicine)">
             <mat-icon>add_shopping_cart</mat-icon>
             Hozzáadás
-          </button> </mat-card-actions
-        >}
+          </button>
+          <button mat-button color="accent" (click)="updateMedicine(medicine)">
+            <mat-icon>edit</mat-icon>
+            Szerkesztés
+          </button>
+        </mat-card-actions>
+
+        }
       </mat-card>
       }
     </div>

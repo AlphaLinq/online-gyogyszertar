@@ -23,7 +23,7 @@ export class MedicineService {
 
   constructor(private firestore: Firestore, private authService: AuthService) {}
 
-  // Add medicine to the database
+  // CREATE
   async addMedicine(medicine: Omit<Medicine, 'id'>): Promise<Medicine> {
     try {
       const medicinesCollectionRef = collection(
@@ -56,26 +56,13 @@ export class MedicineService {
     return results.filter((med): med is Medicine => med !== null);
   }
 
-  // Fetch all medicines from the database
+  // READ
   getMedicines(): Observable<Medicine[]> {
     const medicineCollection = collection(
       this.firestore,
       this.MEDICINES_COLLECTION
     );
-    const medicines: Medicine[] = [];
-    const batchSize = 10; // Number of documents to fetch in each batch
 
-    /*for (let i = 0; i < medicines.length; i += batchSize) {
-      const medicineBatch = medicines.slice(i, i + batchSize);
-      const q = query(medicineCollection, where('id', 'in', medicineBatch));
-      const querySnapshot = await getDocs(q);
-      querySnapshot.forEach((doc) => {
-        const data = doc.data() as Medicine;
-        medicines.push({ ...data, id: doc.id } as Medicine);
-      });
-    }
-
-    return of(medicines);*/
     return from(getDocs(medicineCollection)).pipe(
       map((querySnapshot) => {
         const medicines: Medicine[] = [];

@@ -51,6 +51,10 @@ export class MedicinesComponent implements OnInit, OnDestroy {
     this.router.navigate(['/add-medicine']);
   }
 
+  updateMedicine(medicine: Medicine) {
+    this.router.navigate(['/update-medicine', medicine.id]);
+  }
+
   addToCart(medicine: Medicine): void {
     this.cartService.addToCart(medicine);
     this.successMessage = 'Sikeresen hozzáadva a kosárhoz!';
