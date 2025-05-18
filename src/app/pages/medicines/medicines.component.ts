@@ -137,4 +137,11 @@ export class MedicinesComponent implements OnInit, OnDestroy {
     });
     return medicines;
   }
+
+  async deleteMedicine(medicine: Medicine) {
+    if (confirm('Biztosan törölni szeretnéd ezt a gyógyszert?')) {
+      await this.medicineService.deleteMedicine(medicine);
+      this.loadAllMedicineData();
+    }
+  }
 }
