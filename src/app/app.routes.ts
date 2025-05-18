@@ -35,6 +35,13 @@ export const routes: Routes = [
       import('./pages/signup/signup.component').then((m) => m.SignupComponent),
     canActivate: [publicGuard],
   },
+  {
+    path: 'add-medicine',
+    loadComponent: () =>
+      import('./pages/addmedicine/addmedicine.component').then(
+        (m) => m.AddmedicineComponent
+      ),
+  },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 
   {

@@ -2,8 +2,57 @@
   display: flex;
   align-items: flex-start;
 }
+.pagination-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  padding: 16px 0;
+  box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.05);
+  z-index: 100;
+}
+
+.success-message {
+  position: fixed;
+  top: 32px;
+  right: 32px;
+  min-width: 200px;
+  max-width: 300px;
+  background: var(--background-color);
+  color: var(--text-color);
+  border: 1px solid var(--primary-color);
+  padding: 16px 24px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold;
+  z-index: 9999;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+  animation: fadeInOut 2s;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
 
 .medicine-container {
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
@@ -61,13 +110,17 @@ button:hover {
 .medicine-card mat-card-subtitle {
   font-family: "Orbitron", sans-serif;
   font-size: 1rem;
-  color: var(--secondary-color);
+  color: var(--secondary-color) !important;
 }
 
 .medicine-card mat-card-content {
   font-family: "Orbitron", sans-serif;
   font-size: 1rem;
-  color: var(--secondary-color);
+  color: var(--secondary-color) !important;
+}
+
+.medicine-card .mat-mdc-card-subtitle {
+  color: white !important;
 }
 
 @media (max-width: 768px) {
@@ -78,4 +131,13 @@ button:hover {
   .medicine-card {
     max-width: 100%;
   }
+}
+
+.filter-and-add {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px; /* kis térköz a szűrő és a gomb között */
+  margin-top: 50px;
+  z-index: 1; /* biztosítja, hogy a gomb a szűrő felett legyen */
 }

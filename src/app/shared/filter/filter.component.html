@@ -4,5 +4,21 @@
     <mat-radio-button value="all">Összes</mat-radio-button>
     <mat-radio-button value="painkillers">Fájdalomcsillapító</mat-radio-button>
     <mat-radio-button value="vitamins">Vitaminok</mat-radio-button>
+    <mat-radio-button value="anti-fever">Megfázás Elleni</mat-radio-button>
+    <mat-radio-button value="anti-inflammatory"
+      >Gyulladáscsökkentő</mat-radio-button
+    >
+    <mat-radio-button value="cough-suppressant"
+      >Köhögéscsillapító</mat-radio-button
+    >
+    <mat-radio-button value="digestive-aid">Emésztésjavító</mat-radio-button>
+    <mat-radio-button value="probiotic">Probiotikum</mat-radio-button>
   </mat-radio-group>
+  <mat-form-field appearance="fill" class="sort-field">
+    <mat-label>Rendezés ár szerint</mat-label>
+    <mat-select (selectionChange)="onSortChange($event.value)">
+      <mat-option value="price-asc">Ár szerint növekvő</mat-option>
+      <mat-option value="price-desc">Ár szerint csökkenő</mat-option>
+    </mat-select>
+  </mat-form-field>
 </mat-card>

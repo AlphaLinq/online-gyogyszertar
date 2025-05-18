@@ -9,6 +9,7 @@ import {
   where,
   deleteDoc,
   getDoc,
+  addDoc,
 } from '@angular/fire/firestore';
 import { AuthService } from './auth.service';
 import { Observable, switchMap, of, from, map } from 'rxjs';
@@ -23,18 +24,14 @@ export class MedicineService {
   constructor(private firestore: Firestore, private authService: AuthService) {}
 
   // Add medicine to the database
-  async addMedicine(medicine: Medicine): Promise<Medicine> {
+  async addMedicine(medicine: Omit<Medicine, 'id'>): Promise<Medicine> {
     try {
       const medicinesCollectionRef = collection(
         this.firestore,
         this.MEDICINES_COLLECTION
       );
-      const docRef = doc(medicinesCollectionRef, medicine.id);
-      const medicineId = docRef.id;
-
-      await updateDoc(docRef, { ...medicine });
-      const newMedicine = { ...medicine, id: medicineId } as Medicine;
-
+      const docRef = await addDoc(medicinesCollectionRef, medicine);
+      const newMedicine = { ...medicine, id: docRef.id } as Medicine;
       return newMedicine;
     } catch (error) {
       console.error('Error adding medicine:', error);

@@ -1,0 +1,78 @@
+<h2>Új gyógyszer hozzáadása</h2>
+<form
+  ngForm
+  (ngSubmit)="onSubmit()"
+  enctype="multipart/form-data"
+  class="add-medicine-form"
+>
+  <div class="form-row">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Név</mat-label>
+      <input matInput name="name" [(ngModel)]="medicine.name" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Ár (Ft)</mat-label>
+      <input
+        matInput
+        type="number"
+        name="price"
+        [(ngModel)]="medicine.price"
+        required
+        min="1"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Típus</mat-label>
+      <mat-select name="type" [(ngModel)]="medicine.type" required>
+        @for (type of medicineTypes; track type) {
+        <mat-option [value]="type.value">{{ type.label }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Leírás</mat-label>
+      <textarea
+        matInput
+        name="description"
+        [(ngModel)]="medicine.description"
+        required
+      ></textarea>
+    </mat-form-field>
+  </div>
+  <div class="picture-upload">
+    <label for="image">Kép feltöltése:</label>
+    <input
+      type="file"
+      id="image"
+      (change)="onFileSelected($event)"
+      accept="image/*"
+    />
+  </div>
+
+  @if (imagePreview) {
+  <div class="picture-upload">
+    <img
+      [src]="imagePreview"
+      alt="Kép előnézet"
+      style="max-width: 200px; margin-top: 10px"
+    />
+  </div>
+  }
+
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="
+      !medicine.name ||
+      !medicine.price ||
+      !medicine.type ||
+      !medicine.description
+    "
+  >
+    Hozzáadás
+  </button>
+</form>

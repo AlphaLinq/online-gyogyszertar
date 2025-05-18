@@ -3,7 +3,7 @@ export interface Medicine {
   name: string;
   price: number;
   description: string;
-  png: string;
+  imgURL: string;
   type: string;
   quantity?: number;
 }

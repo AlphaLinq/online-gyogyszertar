@@ -1,6 +1,28 @@
 <body>
+  @if (successMessage) {
+  <div class="success-message">
+    {{ successMessage }}
+  </div>
+  }
   <div class="page-layout">
-    <app-filter (categorySelected)="onCategorySelected($event)"></app-filter>
+    <div class="filter-and-add">
+      <app-filter
+        (categorySelected)="onCategorySelected($event)"
+        (sortChanged)="onSortChanged($event)"
+      >
+      </app-filter>
+      @if (isLoggedIn) {
+      <button
+        mat-raised-button
+        color="primary"
+        class="important-button"
+        (click)="addMedicine()"
+      >
+        <mat-icon>add</mat-icon>
+        Gyógyszer hozzáadása
+      </button>
+      }
+    </div>
 
     <div class="medicine-container">
       @for (medicine of filteredMedicines; track medicine.id) {
@@ -8,8 +30,10 @@
         <mat-card-header>
           <mat-card-title>{{ medicine.name }}</mat-card-title>
         </mat-card-header>
-        <mat-card-subtitle>{{ medicine.price }} Ft</mat-card-subtitle>
-        <img mat-card-image [src]="medicine.png" [alt]="medicine.name" />
+        <mat-card-subtitle class="price-tag"
+          >{{ medicine.price }} Ft</mat-card-subtitle
+        >
+        <img mat-card-image [src]="medicine.imgURL" [alt]="medicine.name" />
 
         <mat-card-content>
           @if (medicine.description) {
@@ -18,13 +42,13 @@
           <p class="no-description">Nincs leírás</p>
           }
         </mat-card-content>
-
+        @if (isLoggedIn) {
         <mat-card-actions>
           <button mat-button color="primary" (click)="addToCart(medicine)">
             <mat-icon>add_shopping_cart</mat-icon>
             Hozzáadás
-          </button>
-        </mat-card-actions>
+          </button> </mat-card-actions
+        >}
       </mat-card>
       }
     </div>

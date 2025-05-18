@@ -26,6 +26,7 @@ import { MedicineService } from '../../shared/services/medicine.service';
 export class ProfileComponent implements OnInit, OnDestroy {
   user: User | null = null;
   isLoading = true;
+  successMessage: string = '';
 
   // Kosár: tömb, amiben van termék + darabszám
   cartEntries: { product: Medicine; quantity: number }[] = [];
@@ -116,5 +117,11 @@ export class ProfileComponent implements OnInit, OnDestroy {
       ? this.user.name.lastName.charAt(0).toUpperCase()
       : '';
     return firstInitial + lastInitial;
+  }
+
+  order() {
+    this.clearCart();
+    this.successMessage = 'Megrendelés leadva';
+    setTimeout(() => (this.successMessage = ''), 2000);
   }
 }

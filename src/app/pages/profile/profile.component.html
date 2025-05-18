@@ -1,6 +1,8 @@
 <body>
   <div class="profile-container">
-    {{ getUserInitials() }}
+    @if (successMessage) {
+    <div class="success-message">{{ successMessage }}</div>
+    }
 
     <main>
       <header class="profile-header">
@@ -35,7 +37,7 @@
 
               <img
                 mat-card-image
-                [src]="item.product.png"
+                [src]="item.product.imgURL"
                 [alt]="item.product.name"
               />
 
@@ -55,6 +57,9 @@
           <p>Végösszeg: {{ totalPrice | currencyChange }}</p>
           <button mat-button (click)="clearCart()">
             <mat-icon>delete</mat-icon>Kosár kiürítése
+          </button>
+          <button mat-button (click)="order()">
+            <mat-icon>shopping_cart</mat-icon>Megrendelés
           </button>
         </div>
       </section>
